@@ -1,0 +1,11 @@
+export const loginUrl = 'login';
+export const sendReportUrl = 'save_report';
+export const reportExistsUrl = 'report_exists';
+export const fetchReportUrl = 'get_by_location_and_date';
+export const fetchByIdUrl = 'get_by_id';
+export const getNextNUrl = 'get_next_N_reports';
+export const getPreviousNUrl = 'get_prev_N_reports';
+export const getUpdatesUrl = 'get_updates';
+export const fetchLatestUrl = 'get_last_report';
+export const logoutUrl = 'logout';
+export const checkUserUrl = 'check_user';

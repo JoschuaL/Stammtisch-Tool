@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>
+            Stammtisch Tool
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary" class="ion-padding">
+    <form [formGroup]="accountForm" (ngSubmit)="authenticateUser(accountForm.value)">
+        <ion-grid>
+            <ion-row class="ion-justify-content-center">
+                <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+                    <div class="ion-text-center">
+                        <h3>Login</h3>
+                    </div>
+                    <div class="ion-padding">
+                        <ion-item>
+                            <ion-input type="text" formControlName="username" placeholder="username"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input type="password" formControlName="password" placeholder="password"></ion-input>
+                        </ion-item>
+                    </div>
+                    <div class="ion-padding">
+                        <ion-button color="primary" fill="solid" size="large" type="submit"
+                            [disabled]="accountForm.invalid || !connection" expand="block">Login
+                        </ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-justify-content-center" *ngIf="error !== ''">
+                <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+                    <div class="ion-text-center">
+                        <ion-label color="danger">
+                            Error: {{error}}
+                        </ion-label>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>
+<app-connection-component (connection)="setConnection($event)" [additionalText]="'Login will be disabled'">
+</app-connection-component>

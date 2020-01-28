@@ -1,0 +1,8 @@
+{
+  "name": "Stammtisch-Tool",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

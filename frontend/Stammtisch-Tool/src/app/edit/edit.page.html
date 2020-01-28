@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="SelectedReport == null">Loading...</ion-title>
+    <ion-title *ngIf="SelectedReport != null">Edit {{SelectedReport.location}}
+      {{SelectedReport.meeting_date | date : 'dd.MM.yyyy'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary" *ngIf="SelectedReport != null">
+  <app-report [refreshCallback]="nop" [prefill]="SelectedReport" [location]="SelectedReport.location"></app-report>
+</ion-content>
+
+<app-connection-component [additionalText]=""></app-connection-component>

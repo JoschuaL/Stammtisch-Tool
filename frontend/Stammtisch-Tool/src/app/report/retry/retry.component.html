@@ -1,0 +1,22 @@
+<ion-content color="secondary">
+    <ion-grid>
+        <ion-row class="ion-justify-content-center ion-text-center">
+            <ion-col>
+                <ion-label>
+                    {{num}} unsubmitted Reports
+                </ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center ion-text-center">
+            <ion-col>
+                <ion-button *ngIf="online" color="primary" (click)="retryCallback()">
+                    Retry
+                </ion-button>
+                <ion-label *ngIf="!online" color="danger">
+                    You are currently offline, retry is disabled
+                </ion-label>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

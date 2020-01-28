@@ -1,0 +1,7 @@
+<ion-footer *ngIf="!onlineStatus">
+  <ion-toolbar [color]='onlineStatus ? "success" : "warning"'>
+    <ion-title>
+      {{networkStatus}} {{additionalText}}
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

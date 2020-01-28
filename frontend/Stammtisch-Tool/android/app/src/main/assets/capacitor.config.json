@@ -1,0 +1,8 @@
+{
+  "appId": "de.uds.stammtischtool",
+  "appName": "Stammtisch-Tool",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "../../static/",
+  "cordova": {}
+}

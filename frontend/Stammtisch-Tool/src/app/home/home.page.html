@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-toggle menu="home-menu">
+                <ion-button>
+                    <ion-icon name="menu"></ion-icon>
+                </ion-button>
+            </ion-menu-toggle>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-item button="true" color="primary" *ngIf="unsubmittedNumber > 0" (click)="presentRetryPopover($event)">
+                <ion-badge color="warning">
+                    {{unsubmittedNumber}}
+                </ion-badge>
+            </ion-item>
+            <ion-item button="true" color="primary" (click)="presetLogoutPopover($event)">
+                <ion-icon name="contact"></ion-icon>
+            </ion-item>
+
+        </ion-buttons>
+        <ion-title>
+            Stammtisch-Tool {{SelectedLocation}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+    <ion-split-pane contentId="home-content">
+        <ion-menu contentId="home-content" menuId="home-menu">
+
+            <ion-list lines="inset">
+                <ion-menu-toggle autoHide="false">
+                    <ion-item color="secondary" button="true" [routerLink]="['/status', 'own']">
+                        <ion-label>
+                            My Reports
+                        </ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle autoHide="false">
+                    <ion-item color="secondary" button="true" [routerLink]="['/status', 'global']">
+                        <ion-label>
+                            Global Reports
+                        </ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle autoHide="false">
+                    <ion-item color="secondary" button="true" [routerLink]="['/stats']">
+                        <ion-label>
+                            Stats
+                        </ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-list-header color="secondary">
+                    Locations
+                </ion-list-header>
+                <ion-menu-toggle autoHide="false" *ngFor="let loc of Locations; let i = index">
+                    <ion-item color="secondary" button="true" (click)="changeLocation(loc)">
+                        <ion-label>
+                            {{loc}}
+                        </ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+            </ion-list>
+        </ion-menu>
+        <ion-content color="secondary" id="home-content">
+            <app-report [refreshCallback]="refresher" [prefill]="null" [location]="SelectedLocation"></app-report>
+        </ion-content>
+
+
+    </ion-split-pane>
+</ion-content>
+<app-connection-component [additionalText]="" (connection)="setConnection($event)"></app-connection-component>
